@@ -26,19 +26,11 @@ public class PrintedProductService {
     }
 
     public PrintedProduct updateProduct(Long id, PrintedProduct product) {
-//        return productRepo.findById(id).map(
-//                        item -> {
-//                            item.setName(product.getName());
-//                            item.setAuthors(product.getAuthors());
-//                            item.setPublishers(product.getPublishers());
-//                            item.setPublishDate(product.getPublishDate());
-//                            return productRepo.save(item);
-//                        })
-//                .orElseThrow();
         return productRepo.save(product);
     }
 
     public PrintedProduct saveProduct(PrintedProduct product) {
+
         return productRepo.save(product);
     }
 

@@ -27,14 +27,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public PrintedProduct post(PrintedProduct product) {
+    public PrintedProduct post(@RequestBody PrintedProduct product) {
+        System.out.println(1);
         return productService.saveProduct(product);
     }
     @PutMapping("{id}")
     public PrintedProduct put(@PathVariable Long id, @RequestBody PrintedProduct product){
         return productService.updateProduct(id,product);
     }
-
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id) {
         productService.deleteProductById(id);
