@@ -13,6 +13,7 @@ CREATE TABLE printed_products (
     id int NOT NULL AUTO_INCREMENT,
     name VARCHAR(255),
     publishDate DATE,
+    type_id int,
         PRIMARY KEY (id)
 );
 CREATE TABLE product_author(
@@ -30,4 +31,11 @@ CREATE TABLE product_publisher(
     FOREIGN KEY (publisher_id) REFERENCES publishers,
     FOREIGN KEY (PRINTED_PRODUCT) REFERENCES printed_products,
     PRIMARY KEY (id)
-)
+);
+CREATE TABLE PRODUCT_TYPE(
+    id int NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    primary key(id)
+);
+alter table printed_products
+    ADD FOREIGN KEY (type_id) REFERENCES PRODUCT_TYPE(id);

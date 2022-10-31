@@ -1,6 +1,7 @@
 package com.example.library.controller;
 
 import com.example.library.entity.PrintedProduct;
+import com.example.library.entity.dto.PrintedProductDTO;
 import com.example.library.service.PrintedProductService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class ProductController {
         return productService.saveProduct(product);
     }
     @PutMapping("{id}")
-    public PrintedProduct put(@PathVariable Long id, @RequestBody PrintedProduct product){
+    public PrintedProduct put(@PathVariable Long id, @RequestBody PrintedProductDTO product){
         return productService.updateProduct(id,product);
     }
     @DeleteMapping("{id}")

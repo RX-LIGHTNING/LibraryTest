@@ -4,9 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("product_publisher")
-@Data
-@AllArgsConstructor
+@Table("PRODUCT_PUBLISHER")
 public class PublisherRef {
     private long publisherId;
+
+    public long getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(long publisherId) {
+        this.publisherId = publisherId;
+    }
 }

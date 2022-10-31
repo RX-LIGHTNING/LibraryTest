@@ -1,15 +1,19 @@
 package com.example.library.entity;
 
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.Objects;
+import java.util.Set;
 
-@Table("AUTHORS")
-public class Author {
+@Table("PRODUCT_TYPE")
+public class ProductType {
     @Id
     private long id;
     private String name;
+    @MappedCollection(idColumn = "type_id")
+    private Set<PrintedProduct> products;
 
     public long getId() {
         return id;
@@ -27,16 +31,11 @@ public class Author {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Author author = (Author) o;
-        return id == author.id && Objects.equals(name, author.name);
+    public Set<PrintedProduct> getProducts() {
+        return products;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
+    public void setProducts(Set<PrintedProduct> products) {
+        this.products = products;
     }
 }
