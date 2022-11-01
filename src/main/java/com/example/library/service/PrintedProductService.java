@@ -37,8 +37,17 @@ public class PrintedProductService {
         return productRepo.findAll();
     }
 
-    public PrintedProduct getProductById(Long id) {
-        return productRepo.findById(id).orElseThrow();
+    public PrintedProductDTO getProductById(Long id) {
+        return productRepo.findById(id).map(item-> {
+            PrintedProductDTO dto = new PrintedProductDTO();
+            dto.setAuthors(authorService.findAllByProduct(item));
+            dto.setPublishers(publisherService.findAllByProduct(item));
+            dto.setProductType(productTypeService.findByProduct(item));
+            dto.setName(item.getName());
+            dto.setPublishDate(item.getPublishDate());
+            return dto;
+        }
+        ).get();
     }
 
     public PrintedProduct updateProduct(Long id, PrintedProductDTO product) {

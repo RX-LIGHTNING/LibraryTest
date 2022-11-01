@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public PrintedProduct getById(@PathVariable Long id) {
+    public PrintedProductDTO getById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
@@ -32,10 +32,12 @@ public class ProductController {
         System.out.println(1);
         return productService.saveProduct(product);
     }
+
     @PutMapping("{id}")
-    public PrintedProduct put(@PathVariable Long id, @RequestBody PrintedProductDTO product){
-        return productService.updateProduct(id,product);
+    public PrintedProduct put(@PathVariable Long id, @RequestBody PrintedProductDTO product) {
+        return productService.updateProduct(id, product);
     }
+
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id) {
         productService.deleteProductById(id);

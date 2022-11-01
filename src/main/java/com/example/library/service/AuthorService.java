@@ -1,10 +1,12 @@
 package com.example.library.service;
 
 import com.example.library.entity.Author;
+import com.example.library.entity.PrintedProduct;
 import com.example.library.repository.AuthorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -19,5 +21,8 @@ public class AuthorService {
         else {
             return authorRepo.findByName(author.getName());
         }
+    }
+    List<Author> findAllByProduct(PrintedProduct product){
+        return authorRepo.findAllByProductId(product.getId());
     }
 }

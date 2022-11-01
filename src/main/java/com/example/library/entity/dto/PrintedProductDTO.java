@@ -1,6 +1,7 @@
 package com.example.library.entity.dto;
 
 import com.example.library.entity.Author;
+import com.example.library.entity.PrintedProduct;
 import com.example.library.entity.ProductType;
 import com.example.library.entity.Publisher;
 import com.example.library.entity.ref.AuthorRef;
@@ -59,4 +60,5 @@ public class PrintedProductDTO {
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.library.service;
 
+import com.example.library.entity.PrintedProduct;
 import com.example.library.entity.ProductType;
 import com.example.library.repository.ProductTypeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,8 @@ public class ProductTypeService {
         else {
             return productTypeRepo.findByName(productType.getName());
         }
+    }
+    ProductType findByProduct(PrintedProduct product){
+        return productTypeRepo.findByProductId(product.getId());
     }
 }
