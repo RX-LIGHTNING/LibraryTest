@@ -8,6 +8,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,13 +18,20 @@ public class PrintedProduct {
     private long id;
     @Column("TYPE_ID")
     private long type_id;
-    private Set<AuthorRef> authors;
-    private Set<PublisherRef> publishers;
+    private Set<AuthorRef> authors = new HashSet<>();
+    private Set<PublisherRef> publishers = new HashSet<>();
     @Column("NAME")
     private String name;
     @Column("PUBLISHDATE")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date publishDate;
+
+    public void addAuthor(Author author) {
+        authors.add(new AuthorRef(author.getId()));
+    }
+    public void addPublisher(Publisher publisher) {
+        publishers.add(new PublisherRef(publisher.getId()));
+    }
 
     public long getId() {
         return id;

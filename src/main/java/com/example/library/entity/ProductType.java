@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Table("PRODUCT_TYPE")
@@ -12,8 +13,8 @@ public class ProductType {
     @Id
     private long id;
     private String name;
-    @MappedCollection(idColumn = "type_id")
-    private Set<PrintedProduct> products;
+    @MappedCollection(idColumn = "TYPE_ID")
+    private Set<PrintedProduct> products = new HashSet<>();
 
     public long getId() {
         return id;

@@ -1,32 +1,46 @@
 package com.example.library.entity.dto;
 
+import com.example.library.entity.Author;
+import com.example.library.entity.ProductType;
+import com.example.library.entity.Publisher;
 import com.example.library.entity.ref.AuthorRef;
 import com.example.library.entity.ref.PublisherRef;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 public class PrintedProductDTO {
-    private Set<AuthorRef> authors;
-    private Set<PublisherRef> publishers;
+    private List<Author> authors;
+
+    private ProductType productType;
+
+    private List<Publisher> publishers;
     private String name;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date publishDate;
 
-    public Set<AuthorRef> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<AuthorRef> authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 
-    public Set<PublisherRef> getPublishers() {
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public List<Publisher> getPublishers() {
         return publishers;
     }
 
-    public void setPublishers(Set<PublisherRef> publishers) {
+    public void setPublishers(List<Publisher> publishers) {
         this.publishers = publishers;
     }
 

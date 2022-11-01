@@ -15,4 +15,8 @@ public class PublisherRef {
     public void setPublisherId(long publisherId) {
         this.publisherId = publisherId;
     }
+
+    public PublisherRef(long publisherId) {
+        this.publisherId = publisherId;
+    }
 }

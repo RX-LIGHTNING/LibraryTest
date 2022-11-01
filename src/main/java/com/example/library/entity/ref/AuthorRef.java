@@ -16,4 +16,8 @@ public class AuthorRef {
     public void setAuthorId(long authorId) {
         this.authorId = authorId;
     }
+
+    public AuthorRef(long authorId) {
+        this.authorId = authorId;
+    }
 }
