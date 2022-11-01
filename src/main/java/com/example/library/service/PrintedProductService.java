@@ -38,15 +38,15 @@ public class PrintedProductService {
     }
 
     public PrintedProductDTO getProductById(Long id) {
-        return productRepo.findById(id).map(item-> {
-            PrintedProductDTO dto = new PrintedProductDTO();
-            dto.setAuthors(authorService.findAllByProduct(item));
-            dto.setPublishers(publisherService.findAllByProduct(item));
-            dto.setProductType(productTypeService.findByProduct(item));
-            dto.setName(item.getName());
-            dto.setPublishDate(item.getPublishDate());
-            return dto;
-        }
+        return productRepo.findById(id).map(item -> {
+                    PrintedProductDTO dto = new PrintedProductDTO();
+                    dto.setAuthors(authorService.findAllByProduct(item));
+                    dto.setPublishers(publisherService.findAllByProduct(item));
+                    dto.setProductType(productTypeService.findByProduct(item));
+                    dto.setName(item.getName());
+                    dto.setPublishDate(item.getPublishDate());
+                    return dto;
+                }
         ).get();
     }
 
@@ -65,29 +65,28 @@ public class PrintedProductService {
                                 item.addPublisher(publisherService.save(x));
                             }
                     );
-                    productTypeService.save(product.getProductType()).getProducts().add(item);
+                    item.setType_id(productTypeService.save(product.getProductType()).getId());
                     return productRepo.save(item);
                 }).orElseThrow(
                         //Здесь мог быть ваш эксепшен
                 );
-        //Ужасный код, переписать.
         return productRepo.findById(id).get();
     }
 
     public PrintedProduct saveProduct(PrintedProductDTO productDTO) {
         PrintedProduct item = new PrintedProduct();
-            item.setName(productDTO.getName());
-            item.setPublishDate(productDTO.getPublishDate());
-            productDTO.getAuthors().forEach(x -> {
-                        item.addAuthor(authorService.save(x));
-                    }
-            );
-            productDTO.getPublishers().forEach(x -> {
-                        item.addPublisher(publisherService.save(x));
-                    }
-            );
-            item.setType_id(productTypeService.save(productDTO.getProductType()).getId());
-            return productRepo.save(item);
+        item.setName(productDTO.getName());
+        item.setPublishDate(productDTO.getPublishDate());
+        productDTO.getAuthors().forEach(x -> {
+                    item.addAuthor(authorService.save(x));
+                }
+        );
+        productDTO.getPublishers().forEach(x -> {
+                    item.addPublisher(publisherService.save(x));
+                }
+        );
+        item.setType_id(productTypeService.save(productDTO.getProductType()).getId());
+        return productRepo.save(item);
     }
 
     public void deleteProductById(Long id) {

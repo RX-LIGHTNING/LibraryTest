@@ -13,8 +13,6 @@ public class ProductType {
     @Id
     private long id;
     private String name;
-    @MappedCollection(idColumn = "TYPE_ID")
-    private Set<PrintedProduct> products = new HashSet<>();
 
     public long getId() {
         return id;
@@ -32,11 +30,4 @@ public class ProductType {
         this.name = name;
     }
 
-    public Set<PrintedProduct> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<PrintedProduct> products) {
-        this.products = products;
-    }
 }

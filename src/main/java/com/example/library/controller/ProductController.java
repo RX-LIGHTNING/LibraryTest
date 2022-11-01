@@ -29,7 +29,6 @@ public class ProductController {
 
     @PostMapping
     public PrintedProduct post(@RequestBody PrintedProductDTO product) {
-        System.out.println(1);
         return productService.saveProduct(product);
     }
 

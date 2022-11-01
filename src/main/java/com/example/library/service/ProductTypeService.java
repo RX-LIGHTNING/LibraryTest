@@ -22,6 +22,6 @@ public class ProductTypeService {
         }
     }
     ProductType findByProduct(PrintedProduct product){
-        return productTypeRepo.findByProductId(product.getId());
+        return productTypeRepo.findByProduct(product.getType_id());
     }
 }

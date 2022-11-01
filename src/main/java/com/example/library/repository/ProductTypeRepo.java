@@ -9,7 +9,6 @@ public interface ProductTypeRepo extends CrudRepository<ProductType, Long> {
     @Query("SELECT * FROM PRODUCT_TYPE WHERE name = :name")
     ProductType findByName(@Param("name") String name);
 
-    //Переписать запрос.
-//    @Query("SELECT * FROM PRODUCT_TYPE as t1 WHERE t1.id = :prodId")
-//    ProductType findByProductId(@Param("prodId") Long id);
+    @Query("SELECT * FROM PRODUCT_TYPE as t1 WHERE t1.id = :typeId")
+    ProductType findByProduct(@Param("typeId") Long id);
 }

@@ -12,14 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 public class PrintedProductDTO {
-    private List<Author> authors;
 
-    private ProductType productType;
-
-    private List<Publisher> publishers;
     private String name;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date publishDate;
+    private List<Author> authors;
+
+    private List<Publisher> publishers;
+
+    private ProductType productType;
 
     public List<Author> getAuthors() {
         return authors;
