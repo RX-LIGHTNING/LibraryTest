@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.module.ResolutionException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,13 +30,25 @@ public class PrintedProductService {
     @Autowired
     ProductTypeService productTypeService;
 
-    public Iterable<PrintedProduct> getAllProducts() {
-        return productRepo.findAll();
+    public List<PrintedProductDTO> getAllProducts() {
+        List<PrintedProductDTO> productDTOS = new ArrayList<>();
+        for (PrintedProduct item : productRepo.findAll()) {
+            PrintedProductDTO dto = new PrintedProductDTO();
+            dto.setId(item.getId());
+            dto.setAuthors(authorService.findAllByProduct(item));
+            dto.setPublishers(publisherService.findAllByProduct(item));
+            dto.setProductType(productTypeService.findByProduct(item));
+            dto.setName(item.getName());
+            dto.setPublishDate(item.getPublishDate());
+            productDTOS.add(dto);
+        }
+        return productDTOS;
     }
 
     public PrintedProductDTO getProductById(Long id) {
         return productRepo.findById(id).map(item -> {
                     PrintedProductDTO dto = new PrintedProductDTO();
+                    dto.setId(item.getId());
                     dto.setAuthors(authorService.findAllByProduct(item));
                     dto.setPublishers(publisherService.findAllByProduct(item));
                     dto.setProductType(productTypeService.findByProduct(item));

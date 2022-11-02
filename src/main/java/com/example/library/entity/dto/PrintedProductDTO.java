@@ -13,37 +13,21 @@ import java.util.List;
 
 public class PrintedProductDTO {
 
+    private Long id;
     private String name;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date publishDate;
     private List<Author> authors;
-
     private List<Publisher> publishers;
 
     private ProductType productType;
 
-    public List<Author> getAuthors() {
-        return authors;
+    public Long getId() {
+        return id;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-    public List<Publisher> getPublishers() {
-        return publishers;
-    }
-
-    public void setPublishers(List<Publisher> publishers) {
-        this.publishers = publishers;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,4 +46,27 @@ public class PrintedProductDTO {
         this.publishDate = publishDate;
     }
 
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    public List<Publisher> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(List<Publisher> publishers) {
+        this.publishers = publishers;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
 }

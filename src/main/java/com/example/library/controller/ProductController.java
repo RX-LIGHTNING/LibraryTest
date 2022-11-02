@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/v1/product")
 @RequiredArgsConstructor
 @RestController
@@ -18,7 +20,7 @@ public class ProductController {
     PrintedProductService productService;
 
     @GetMapping
-    public Iterable<PrintedProduct> get() {
+    public List<PrintedProductDTO> get() {
         return productService.getAllProducts();
     }
 
