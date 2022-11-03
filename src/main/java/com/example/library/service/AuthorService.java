@@ -27,7 +27,7 @@ public class AuthorService {
     }
 
     //В данном методе происходит поиск авторов по переданному объекту класса PrintedProduct
-    List<Author> findAllByProduct(PrintedProduct product) {
+    public List<Author> findAllByProduct(PrintedProduct product) {
         return authorRepo.findAllByProductId(product.getId());
     }
 
@@ -44,9 +44,7 @@ public class AuthorService {
     //Метод предназначенный для поиска автора по идентификатору,  результат выполнения метода конвертируется
     //в dto
     public AuthorDTO getAuthorById(Long id) {
-        return authorRepo.findById(id).map(item -> {
-                    return new AuthorDTO(item.getId(), item.getName());
-                }
+        return authorRepo.findById(id).map(item -> new AuthorDTO(item.getId(), item.getName())
         ).get();
     }
 

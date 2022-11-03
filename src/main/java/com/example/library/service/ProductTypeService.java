@@ -24,7 +24,7 @@ public class ProductTypeService {
     }
 
     //Метод для поиска ProductType по PrintedProduct
-    ProductType findByProduct(PrintedProduct product) {
+    public ProductType findByProduct(PrintedProduct product) {
         return productTypeRepo.findByProduct(product.getType_id());
     }
 
