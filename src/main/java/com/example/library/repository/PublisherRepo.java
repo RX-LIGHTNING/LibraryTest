@@ -1,6 +1,5 @@
 package com.example.library.repository;
 
-import com.example.library.entity.Author;
 import com.example.library.entity.Publisher;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;

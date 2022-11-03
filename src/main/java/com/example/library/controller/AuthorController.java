@@ -2,7 +2,6 @@ package com.example.library.controller;
 
 
 import com.example.library.dto.AuthorDTO;
-import com.example.library.entity.Author;
 import com.example.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

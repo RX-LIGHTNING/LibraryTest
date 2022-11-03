@@ -1,11 +1,8 @@
 package com.example.library.service;
 
-import com.example.library.dto.AuthorDTO;
 import com.example.library.dto.PublisherDTO;
-import com.example.library.entity.Author;
 import com.example.library.entity.PrintedProduct;
 import com.example.library.entity.Publisher;
-import com.example.library.repository.AuthorRepo;
 import com.example.library.repository.PublisherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -2,12 +2,9 @@ package com.example.library.entity;
 
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 //Объект для работы с записями таблицы ProductType, имеет связь один-ко-многим с таблицей PrintedProduct.
 @Table("PRODUCT_TYPE")
