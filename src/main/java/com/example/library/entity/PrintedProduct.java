@@ -29,6 +29,7 @@ public class PrintedProduct {
     public void addAuthor(Author author) {
         authors.add(new AuthorRef(author.getId()));
     }
+
     public void addPublisher(Publisher publisher) {
         publishers.add(new PublisherRef(publisher.getId()));
     }
@@ -79,5 +80,18 @@ public class PrintedProduct {
 
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PrintedProduct that = (PrintedProduct) o;
+        return id == that.id && type_id == that.type_id && Objects.equals(authors, that.authors) && Objects.equals(publishers, that.publishers) && Objects.equals(name, that.name) && Objects.equals(publishDate, that.publishDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type_id, authors, publishers, name, publishDate);
     }
 }

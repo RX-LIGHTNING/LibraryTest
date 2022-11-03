@@ -1,18 +1,14 @@
 package com.example.library.controller;
 
 import com.example.library.entity.PrintedProduct;
-import com.example.library.entity.dto.PrintedProductDTO;
+import com.example.library.dto.PrintedProductDTO;
 import com.example.library.service.PrintedProductService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("/v1/product")
-@RequiredArgsConstructor
 @RestController
 public class ProductController {
 
@@ -20,7 +16,7 @@ public class ProductController {
     PrintedProductService productService;
 
     @GetMapping
-    public List<PrintedProductDTO> get() {
+    public List<PrintedProductDTO> getAll() {
         return productService.getAllProducts();
     }
 
@@ -30,8 +26,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public PrintedProduct post(@RequestBody PrintedProductDTO product) {
-        return productService.saveProduct(product);
+    public void post(@RequestBody PrintedProductDTO product) {
+        productService.saveProduct(product);
     }
 
     @PutMapping("{id}")

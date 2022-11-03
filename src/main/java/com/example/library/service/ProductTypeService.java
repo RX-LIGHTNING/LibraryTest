@@ -13,15 +13,16 @@ public class ProductTypeService {
     @Autowired
     ProductTypeRepo productTypeRepo;
 
-    ProductType save(ProductType productType){
-        if (Objects.isNull(productTypeRepo.findByName(productType.getName()))){
+    ProductType save(ProductType productType) {
+        if (Objects.isNull(productTypeRepo.findByName(productType.getName()))) {
             return productTypeRepo.save(productType);
-        }
-        else {
+        } else {
             return productTypeRepo.findByName(productType.getName());
         }
     }
-    ProductType findByProduct(PrintedProduct product){
+
+    ProductType findByProduct(PrintedProduct product) {
         return productTypeRepo.findByProduct(product.getType_id());
     }
+
 }

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.Objects;
+
 @Table("PRODUCT_PUBLISHER")
 public class PublisherRef {
     private long publisherId;
@@ -18,5 +20,18 @@ public class PublisherRef {
 
     public PublisherRef(long publisherId) {
         this.publisherId = publisherId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PublisherRef that = (PublisherRef) o;
+        return publisherId == that.publisherId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(publisherId);
     }
 }

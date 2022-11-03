@@ -1,4 +1,4 @@
-package com.example.library.entity.dto;
+package com.example.library.dto;
 
 import com.example.library.entity.Author;
 import com.example.library.entity.PrintedProduct;

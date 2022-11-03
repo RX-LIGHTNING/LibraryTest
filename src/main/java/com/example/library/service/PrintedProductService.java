@@ -1,21 +1,14 @@
 package com.example.library.service;
 
 import com.example.library.entity.PrintedProduct;
-import com.example.library.entity.dto.PrintedProductDTO;
-import com.example.library.entity.ref.AuthorRef;
-import com.example.library.entity.ref.PublisherRef;
-import com.example.library.repository.AuthorRepo;
+import com.example.library.dto.PrintedProductDTO;
 import com.example.library.repository.PrintedProductRepo;
-import com.example.library.repository.ProductTypeRepo;
-import com.example.library.repository.PublisherRepo;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.module.ResolutionException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
