@@ -87,6 +87,8 @@ public class PrintedProductService {
         return productRepo.findById(id).map(this::productToDTO).get();
     }
 
+    //Метод который фильтрует результат по двум параметрам: field(поле для фильтрации)
+    //и value(значение фильтра)
     public List<PrintedProductDTO> getProductsByFilter(String field, String value) {
         List<PrintedProduct> temporaryList = new ArrayList<>();
         List<PrintedProductDTO> resultList = new ArrayList<>();
@@ -103,7 +105,7 @@ public class PrintedProductService {
             temporaryList = productRepo.findAllByProductName(value);
         }
         else if (field.equals("date")) {
-            temporaryList = productRepo.findAllByProductName(value);
+            temporaryList = productRepo.findAllByDate(value);
         }
         for (PrintedProduct item: temporaryList) {
             resultList.add(productToDTO(item));
