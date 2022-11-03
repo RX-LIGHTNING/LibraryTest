@@ -87,6 +87,27 @@ public class PrintedProductService {
         return productRepo.findById(id).map(this::productToDTO).get();
     }
 
+    public List<PrintedProductDTO> getProductsByFilter(String field, String value) {
+        List<PrintedProduct> temporaryList = new ArrayList<>();
+        List<PrintedProductDTO> resultList = new ArrayList<>();
+        if (field.equals("author")) {
+            temporaryList = productRepo.findAllByAuthorsName(value).stream().toList();
+        }
+        else if (field.equals("publisher")) {
+            temporaryList = productRepo.findAllByPublisherName(value);
+        }
+        else if (field.equals("type")) {
+            temporaryList = productRepo.findAllByTypeName(value);
+        }
+        else if (field.equals("name")) {
+            temporaryList = productRepo.findAllByProductName(value);
+        }
+        for (PrintedProduct item: temporaryList) {
+            resultList.add(productToDTO(item));
+        }
+        return resultList;
+    }
+
     //Метод предназначенный для обновления уже созданного объекта PrintedProduct, принимает в себя dto
     //В данном методе происходит парсинг dto в обычный объект и его последующее сохранение в БД.
     public PrintedProduct updateProduct(Long id, PrintedProductDTO product) {
@@ -109,5 +130,4 @@ public class PrintedProductService {
     public void deleteProductById(Long id) {
         productRepo.deleteById(id);
     }
-
 }

@@ -22,6 +22,13 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    //get запрос для получения всех объектов класса PrintedProduct, которые соответствуют фильтру
+    @GetMapping("/filter")
+    public List<PrintedProductDTO> getAllByFilter(@RequestParam("field") String field,
+                                                  @RequestParam("value") String value) {
+        return productService.getProductsByFilter(field, value);
+    }
+
     //get запрос для получения объекта класса PrintedProduct по уникальному id
     @GetMapping("{id}")
     public PrintedProductDTO getById(@PathVariable Long id) {
