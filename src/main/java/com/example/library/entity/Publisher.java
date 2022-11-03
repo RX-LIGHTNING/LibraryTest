@@ -7,6 +7,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Objects;
 
+//Объект для работы с записями таблицы Publisher, имеет связь многие-ко-многим с таблицей PrintedProduct,
+//связь осуществляется с помощью вспомогательного класса PublisherRef.
 @Table("PUBLISHERS")
 public class Publisher {
     @Id

@@ -48,11 +48,12 @@ public class PublisherService {
         publisherRepo.deleteById(id);
     }
 
-    public void updatePublisher(Long id, PublisherDTO publisherDTO){
-            publisherRepo.findById(id).map(item -> {
+    public PublisherDTO updatePublisher(Long id, PublisherDTO publisherDTO){
+            Publisher publisher = publisherRepo.findById(id).map(item -> {
                 item.setId(publisherDTO.getId());
                 item.setName(publisherDTO.getName());
                 return publisherRepo.save(item);
-            });
+            }).get();
+            return new PublisherDTO(publisher.getId(), publisherDTO.getName());
     }
 }

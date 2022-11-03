@@ -16,6 +16,8 @@ public class AuthorService {
     @Autowired
     AuthorRepo authorRepo;
 
+    //В данном методе происходит сохранение объекта класса Author, так же происходит проверка на
+    //дубликаты объектов.
     public Author save(Author author) {
         if (Objects.isNull(authorRepo.findByName(author.getName()))) {
             return authorRepo.save(author);
@@ -24,10 +26,13 @@ public class AuthorService {
         }
     }
 
+    //В данном методе происходит поиск авторов по переданному объекту класса PrintedProduct
     List<Author> findAllByProduct(PrintedProduct product) {
         return authorRepo.findAllByProductId(product.getId());
     }
 
+    //В данном методе происходит поиск всех авторов, которые существуют в БД. Так же происходит
+    //их конвертация в dto
     public List<AuthorDTO> getAllAuthors() {
         List<AuthorDTO> temporaryList = new ArrayList<>();
         for (Author item : authorRepo.findAll()) {
@@ -36,6 +41,8 @@ public class AuthorService {
         return temporaryList;
     }
 
+    //Метод предназначенный для поиска автора по идентификатору,  результат выполнения метода конвертируется
+    //в dto
     public AuthorDTO getAuthorById(Long id) {
         return authorRepo.findById(id).map(item -> {
                     return new AuthorDTO(item.getId(), item.getName());
@@ -47,10 +54,11 @@ public class AuthorService {
         authorRepo.deleteById(id);
     }
 
-    public void updateAuthor(Long id, AuthorDTO authorDTO) {
-       authorRepo.findById(id).map(item -> {
+    public AuthorDTO updateAuthor(Long id, AuthorDTO authorDTO) {
+       Author author = authorRepo.findById(id).map(item -> {
             item.setName(authorDTO.getName());
             return authorRepo.save(item);
-        });
+        }).get();
+       return new AuthorDTO(author.getId(), author.getName());
     }
 }

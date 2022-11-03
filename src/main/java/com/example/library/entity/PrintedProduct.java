@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+//Объект для работы с записями таблицы PrintedProduct, является "центральным" объектом
+//с которым проводятся основные операции в программе
 @Table("PRINTED_PRODUCTS")
 public class PrintedProduct {
     @Id

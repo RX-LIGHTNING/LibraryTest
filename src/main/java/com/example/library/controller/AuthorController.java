@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//Контроллер предназначенный для работы с Author.
 @RequestMapping("/v1/author")
 @RestController
 public class AuthorController {
@@ -16,26 +17,25 @@ public class AuthorController {
     @Autowired
     AuthorService authorService;
 
+    //Get запрос для получения всех авторов
     @GetMapping
     public List<AuthorDTO> getAll() {
         return authorService.getAllAuthors();
     }
 
+    //Get запрос для получения автора по id
     @GetMapping("{id}")
     public AuthorDTO getById(@PathVariable Long id) {
         return authorService.getAuthorById(id);
     }
 
-    @PostMapping
-    public void postAuthor(Author author) {
-        authorService.save(author);
-    }
-
+    //Put запрос для изменения уже существующего автора, изменение осуществляется по идентификатору
     @PutMapping("{id}")
-    public void putAuthor(@PathVariable Long id, @RequestBody AuthorDTO authorDTO) {
-        authorService.updateAuthor(id, authorDTO);
+    public AuthorDTO putAuthor(@PathVariable Long id, @RequestBody AuthorDTO authorDTO) {
+        return authorService.updateAuthor(id, authorDTO);
     }
 
+    //Delete запрос для удаления существующего по идентификатору
     @DeleteMapping("{id}")
     public void deleteAuthor(@PathVariable Long id) {
         authorService.deleteAuthorById(id);

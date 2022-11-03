@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+//Объект для работы с записями таблицы ProductType, имеет связь один-ко-многим с таблицей PrintedProduct.
 @Table("PRODUCT_TYPE")
 public class ProductType {
     @Id

@@ -7,9 +7,12 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface AuthorRepo extends CrudRepository<Author,Long> {
+public interface AuthorRepo extends CrudRepository<Author, Long> {
+    //Запрос для поиска автора по имени
     @Query("SELECT * FROM AUTHORS WHERE name = :name")
     Author findByName(@Param("name") String name);
+
+    //Запрос для поиска автора по идентификатору продукции
     @Query("SELECT T1.* FROM AUTHORS as T1 INNER JOIN PRODUCT_AUTHOR as T2 ON T1.ID = T2.AUTHOR_ID WHERE T2.PRINTED_PRODUCT = :ProdId")
     List<Author> findAllByProductId(@Param("ProdId") Long id);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//Контроллер предназначенный для работы с объектами класса Publisher(издатель)
 @RequestMapping("/v1/publisher")
 @RestController
 public class PublisherController {
@@ -17,28 +18,27 @@ public class PublisherController {
     @Autowired
     PublisherService publisherService;
 
+    //get запрос для получения всех издателей
     @GetMapping
     public List<PublisherDTO> getAll() {
         return publisherService.getAllPublishers();
     }
 
+    //get запрос для получения издателя по уникальному идентификатору
     @GetMapping("{id}")
-    public PublisherDTO getAuthorById(@PathVariable Long id) {
+    public PublisherDTO getPublisherById(@PathVariable Long id) {
         return publisherService.getPublisherById(id);
     }
 
-    @PostMapping
-    public void postAuthor(Publisher publisher) {
-        publisherService.save(publisher);
-    }
-
+    //put запрос для изменения издателя по уникальному идентификатору
     @PutMapping("{id}")
-    public void putAuthor(@PathVariable Long id, @RequestBody PublisherDTO publisherDTO) {
-        publisherService.updatePublisher(id, publisherDTO);
+    public PublisherDTO putPublisher(@PathVariable Long id, @RequestBody PublisherDTO publisherDTO) {
+       return publisherService.updatePublisher(id, publisherDTO);
     }
 
+    //delete запрос для удаления издателя по уникальному идентификатору
     @DeleteMapping("{id}")
-    public void deleteAuthor(@PathVariable Long id) {
+    public void deletePublisher(@PathVariable Long id) {
         publisherService.deletePublisherById(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.library.dto;
 
+//dto служащее для передачи объекта класса Publisher
 public class PublisherDTO {
     private long id;
     private String name;

@@ -13,6 +13,8 @@ public class ProductTypeService {
     @Autowired
     ProductTypeRepo productTypeRepo;
 
+    //Метод для сохранения нового объекта класса ProductType, так же в методе происходит проверка на
+    //дубликаты
     ProductType save(ProductType productType) {
         if (Objects.isNull(productTypeRepo.findByName(productType.getName()))) {
             return productTypeRepo.save(productType);
@@ -21,6 +23,7 @@ public class ProductTypeService {
         }
     }
 
+    //Метод для поиска ProductType по PrintedProduct
     ProductType findByProduct(PrintedProduct product) {
         return productTypeRepo.findByProduct(product.getType_id());
     }

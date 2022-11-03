@@ -5,6 +5,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Objects;
 
+//Объект для работы с записями таблицы Author, имеет связь многие-ко-многим с таблицей PrintedProduct,
+//связь осуществляется с помощью вспомогательного класса AuthorRef.
 @Table("AUTHORS")
 public class Author {
     @Id

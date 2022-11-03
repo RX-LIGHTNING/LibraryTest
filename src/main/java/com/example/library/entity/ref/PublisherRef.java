@@ -6,6 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Objects;
 
+//Объект необходимый для создания связи многие-ко-многим между таблицами Publisher и Product
 @Table("PRODUCT_PUBLISHER")
 public class PublisherRef {
     private long publisherId;

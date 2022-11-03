@@ -11,6 +11,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.List;
 
+//dto служащее для передачи объекта класса PrintedProduct, dto передается
+//и принимается уже сразу со списками объектов классов Author, Publisher.
+//Так же сразу передается и объект класса ProductType. Вся остальная работа(Сохранение и т.д.)
+//с ними происходит сервисах.
 public class PrintedProductDTO {
 
     private Long id;
