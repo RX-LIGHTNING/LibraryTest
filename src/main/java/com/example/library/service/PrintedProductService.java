@@ -91,7 +91,7 @@ public class PrintedProductService {
         List<PrintedProduct> temporaryList = new ArrayList<>();
         List<PrintedProductDTO> resultList = new ArrayList<>();
         if (field.equals("author")) {
-            temporaryList = productRepo.findAllByAuthorsName(value).stream().toList();
+            temporaryList = productRepo.findAllByAuthorsName(value);
         }
         else if (field.equals("publisher")) {
             temporaryList = productRepo.findAllByPublisherName(value);
@@ -100,6 +100,9 @@ public class PrintedProductService {
             temporaryList = productRepo.findAllByTypeName(value);
         }
         else if (field.equals("name")) {
+            temporaryList = productRepo.findAllByProductName(value);
+        }
+        else if (field.equals("date")) {
             temporaryList = productRepo.findAllByProductName(value);
         }
         for (PrintedProduct item: temporaryList) {
