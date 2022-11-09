@@ -3,6 +3,7 @@ package com.example.library.controller;
 
 import com.example.library.dto.AuthorDTO;
 import com.example.library.service.AuthorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +12,10 @@ import java.util.List;
 //Контроллер предназначенный для работы с Author.
 @RequestMapping("/v1/author")
 @RestController
+@RequiredArgsConstructor
 public class AuthorController {
 
-    @Autowired
-    AuthorService authorService;
+    private final AuthorService authorService;
 
     //Get запрос для получения всех авторов
     @GetMapping

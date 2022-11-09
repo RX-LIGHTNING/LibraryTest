@@ -3,6 +3,7 @@ package com.example.library.controller;
 import com.example.library.entity.PrintedProduct;
 import com.example.library.dto.PrintedProductDTO;
 import com.example.library.service.PrintedProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +12,9 @@ import java.util.List;
 //Контроллер предназначенный для работы с объектами PrintedProduct
 @RequestMapping("/v1/product")
 @RestController
+@RequiredArgsConstructor
 public class ProductController {
-
-    @Autowired
-    PrintedProductService productService;
+    private final PrintedProductService productService;
 
     //get запрос для получения всех объектов класса PrintedProduct
     @GetMapping

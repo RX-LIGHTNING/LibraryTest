@@ -1,6 +1,9 @@
 package com.example.library.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -8,37 +11,10 @@ import java.util.Objects;
 
 //Объект для работы с записями таблицы ProductType, имеет связь один-ко-многим с таблицей PrintedProduct.
 @Table("PRODUCT_TYPE")
+@Data
+@AllArgsConstructor
 public class ProductType {
     @Id
     private long id;
     private String name;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ProductType that = (ProductType) o;
-        return id == that.id && Objects.equals(name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
 }

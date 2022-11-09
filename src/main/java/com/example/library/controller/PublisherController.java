@@ -2,6 +2,7 @@ package com.example.library.controller;
 
 import com.example.library.dto.PublisherDTO;
 import com.example.library.service.PublisherService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +11,9 @@ import java.util.List;
 //Контроллер предназначенный для работы с объектами класса Publisher(издатель)
 @RequestMapping("/v1/publisher")
 @RestController
+@RequiredArgsConstructor
 public class PublisherController {
-
-    @Autowired
-    PublisherService publisherService;
+    private final PublisherService publisherService;
 
     //get запрос для получения всех издателей
     @GetMapping

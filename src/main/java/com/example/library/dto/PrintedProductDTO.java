@@ -7,6 +7,9 @@ import com.example.library.entity.Publisher;
 import com.example.library.entity.ref.AuthorRef;
 import com.example.library.entity.ref.PublisherRef;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +18,10 @@ import java.util.List;
 //и принимается уже сразу со списками объектов классов Author, Publisher.
 //Так же сразу передается и объект класса ProductType. Вся остальная работа(Сохранение и т.д.)
 //с ними происходит сервисах.
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PrintedProductDTO {
 
     private Long id;
@@ -25,52 +32,4 @@ public class PrintedProductDTO {
     private List<Publisher> publishers;
 
     private ProductType productType;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
-    public List<Publisher> getPublishers() {
-        return publishers;
-    }
-
-    public void setPublishers(List<Publisher> publishers) {
-        this.publishers = publishers;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
 }
