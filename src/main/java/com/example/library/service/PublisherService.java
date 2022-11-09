@@ -4,6 +4,7 @@ import com.example.library.dto.PublisherDTO;
 import com.example.library.entity.PrintedProduct;
 import com.example.library.entity.Publisher;
 import com.example.library.repository.PublisherRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class PublisherService {
-    @Autowired
-    PublisherRepo publisherRepo;
+    private final PublisherRepo publisherRepo;
 
     public Publisher save(Publisher publisher) {
         if (Objects.isNull(publisherRepo.findByName(publisher.getName()))) {
@@ -28,7 +29,7 @@ public class PublisherService {
         return publisherRepo.findAllByProductId(product.getId());
     }
 
-    public List<PublisherDTO> getAllPublishers(){
+    public List<PublisherDTO> getAllPublishers() {
         List<PublisherDTO> temporaryList = new ArrayList<>();
         for (Publisher item : publisherRepo.findAll()) {
             temporaryList.add(new PublisherDTO(item.getId(), item.getName()));
@@ -36,21 +37,21 @@ public class PublisherService {
         return temporaryList;
     }
 
-    public PublisherDTO getPublisherById(Long id){
+    public PublisherDTO getPublisherById(Long id) {
         Publisher publisher = publisherRepo.findById(id).get();
-        return new PublisherDTO(publisher.getId(),publisher.getName());
+        return new PublisherDTO(publisher.getId(), publisher.getName());
     }
 
-    public void deletePublisherById(Long id){
+    public void deletePublisherById(Long id) {
         publisherRepo.deleteById(id);
     }
 
-    public PublisherDTO updatePublisher(Long id, PublisherDTO publisherDTO){
-            Publisher publisher = publisherRepo.findById(id).map(item -> {
-                item.setId(publisherDTO.getId());
-                item.setName(publisherDTO.getName());
-                return publisherRepo.save(item);
-            }).get();
-            return new PublisherDTO(publisher.getId(), publisherDTO.getName());
+    public PublisherDTO updatePublisher(Long id, PublisherDTO publisherDTO) {
+        Publisher publisher = publisherRepo.findById(id).map(item -> {
+            item.setId(publisherDTO.getId());
+            item.setName(publisherDTO.getName());
+            return publisherRepo.save(item);
+        }).get();
+        return new PublisherDTO(publisher.getId(), publisherDTO.getName());
     }
 }

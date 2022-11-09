@@ -5,23 +5,19 @@ import com.example.library.dto.PrintedProductDTO;
 import com.example.library.repository.PrintedProductRepo;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class PrintedProductService {
-    @Autowired
-    PrintedProductRepo productRepo;
-    @Autowired
-    AuthorService authorService;
-    @Autowired
-    PublisherService publisherService;
-    @Autowired
-    ProductTypeService productTypeService;
+    private final PrintedProductRepo productRepo;
+    private final AuthorService authorService;
+    private final PublisherService publisherService;
+    private final ProductTypeService productTypeService;
 
     //Метод служащий для конвертации PrintedProduct в PrintedProductDTO
     private PrintedProductDTO productToDTO(PrintedProduct item) {
